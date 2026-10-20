@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aura Moda | Ropa con estilo</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff8f3;--card:#ffffff;--text:#2b2230;--muted:#7a6f80;--accent:#d6457a;--accent2:#7b4bd6;--line:#f0e3ea;--shadow:0 10px 30px rgba(123,75,214,.12)}
+@media (prefers-color-scheme:dark){:root{--bg:#17121c;--card:#221a2b;--text:#f6eef9;--muted:#b3a6bb;--line:#352a40;--shadow:0 10px 30px rgba(0,0,0,.4)}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1150px;margin:auto;padding:0 20px}
+/* NAV */
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.links{display:flex;gap:26px;font-size:.92rem}
+.links a:hover{color:var(--accent)}
+.cart-btn{background:var(--text);color:var(--bg);border:0;border-radius:30px;padding:9px 18px;font:600 .88rem Poppins;cursor:pointer}
+.cart-btn span{background:var(--accent);color:#fff;border-radius:50%;padding:1px 8px;margin-left:6px}
+@media(max-width:700px){.links{display:none}}
+/* HERO */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:70px 0}
+.tag{display:inline-block;background:#d6457a1a;color:var(--accent);padding:6px 14px;border-radius:30px;font-size:.8rem;font-weight:600;letter-spacing:.5px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.1;margin:18px 0}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{color:var(--muted);max-width:460px;margin-bottom:28px}
+.btn{display:inline-block;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#fff;padding:14px 30px;border-radius:40px;font-weight:600;box-shadow:var(--shadow);transition:.25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.ghost{background:none;color:var(--text);border:2px solid var(--line);box-shadow:none;margin-left:10px}
+.stats{display:flex;gap:34px;margin-top:38px}
+.stats b{font-family:'Playfair Display',serif;font-size:1.8rem;display:block}
+.stats small{color:var(--muted)}
+.hero-art{height:480px;border-radius:200px 200px 30px 30px;background:linear-gradient(160deg,#ffd1e3,#d9c4ff 60%,#bfe3ff);position:relative;display:grid;place-items:center;font-size:11rem;box-shadow:var(--shadow)}
+.float{position:absolute;background:var(--card);border-radius:16px;padding:10px 16px;font-size:.82rem;box-shadow:var(--shadow);animation:fl 4s ease-in-out infinite}
+.float.a{left:-20px;top:70px}.float.b{right:-10px;bottom:60px;animation-delay:1.5s}
+@keyframes fl{50%{transform:translateY(-10px)}}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding:40px 0}.hero-art{height:320px;font-size:7rem}}
+/* SECCIONES */
+section{padding:60px 0}
+.title{text-align:center;margin-bottom:36px}
+.title h2{font-family:'Playfair Display',serif;font-size:2.2rem}
+.title p{color:var(--muted)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.cat{border-radius:22px;padding:30px 20px;text-align:center;color:#2b2230;font-weight:600;transition:.3s;cursor:pointer}
+.cat:hover{transform:translateY(-6px) rotate(-1deg)}
+.cat i{display:block;font-style:normal;font-size:3rem;margin-bottom:6px}
+.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px}
+.filters button{border:1px solid var(--line);background:var(--card);color:var(--text);padding:8px 20px;border-radius:30px;font:400 .88rem Poppins;cursor:pointer;transition:.2s}
+.filters button.on,.filters button:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:24px}
+.card{background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--shadow);transition:.3s;position:relative}
+.card:hover{transform:translateY(-8px)}
+.thumb{height:260px;display:grid;place-items:center;font-size:5.5rem;position:relative;overflow:hidden}
+.thumb img,.hero-art>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .thumb img{transform:scale(1.08)}
+.hero-art{overflow:visible}
+.hero-art>img{border-radius:inherit}
+.badge{position:absolute;top:14px;left:14px;background:var(--accent);color:#fff;font-size:.72rem;font-weight:600;padding:3px 12px;border-radius:20px}
+.info{padding:18px}
+.info small{color:var(--muted)}
+.info h3{font-size:1.02rem;margin:2px 0 6px}
+.stars{color:#f5a623;font-size:.85rem}
+.row{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.price{font-weight:600;font-size:1.15rem}
+.price s{color:var(--muted);font-size:.8rem;font-weight:300;margin-left:6px}
+.add{border:0;background:var(--text);color:var(--bg);width:40px;height:40px;border-radius:50%;font-size:1.3rem;cursor:pointer;transition:.2s}
+.add:hover{background:var(--accent);transform:scale(1.1)}
+/* BANNER */
+.promo{background:linear-gradient(120deg,var(--accent2),var(--accent));color:#fff;border-radius:30px;padding:56px 30px;text-align:center}
+.promo h2{font-family:'Playfair Display',serif;font-size:2.4rem}
+.promo p{opacity:.92;margin:8px 0 22px}
+.promo code{background:#ffffff33;padding:6px 16px;border-radius:10px;font-size:1.1rem;letter-spacing:2px}
+/* BENEFICIOS */
+.perks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.perk{background:var(--card);border-radius:20px;padding:26px;text-align:center;box-shadow:var(--shadow)}
+.perk i{font-style:normal;font-size:2.2rem}
+.perk h4{margin:8px 0 4px}
+.perk p{color:var(--muted);font-size:.88rem}
+/* OPINIONES */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.rev{background:var(--card);border-radius:20px;padding:24px;border-left:5px solid var(--accent)}
+.rev p{color:var(--muted);font-size:.93rem;margin:8px 0 12px}
+/* NEWSLETTER */
+.news{text-align:center}
+.news form{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.news input{padding:14px 22px;border-radius:40px;border:1px solid var(--line);background:var(--card);color:var(--text);width:min(340px,100%);font:400 .95rem Poppins}
+.news button{border:0;cursor:pointer;font:600 1rem Poppins}
+#msg{margin-top:12px;color:var(--accent);font-weight:600;min-height:24px}
+footer{background:#1b1422;color:#cfc3d6;padding:50px 0 24px;margin-top:40px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:30px}
+footer h5{color:#fff;margin-bottom:10px}
+footer li{list-style:none;font-size:.9rem;margin:5px 0}
+.copy{text-align:center;font-size:.8rem;margin-top:30px;border-top:1px solid #ffffff1f;padding-top:18px}
+/* CARRITO */
+#panel{position:fixed;top:0;right:-420px;width:min(400px,100%);height:100%;background:var(--card);z-index:50;box-shadow:-10px 0 40px #0004;transition:.35s;display:flex;flex-direction:column;padding:22px}
+#panel.open{right:0}
+#panel header{position:static;background:none;border:0;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+#items{flex:1;overflow:auto}
+.it{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.it .e{font-size:2rem}
+.it div{flex:1;font-size:.9rem}
+.it button{border:0;background:none;color:var(--accent);cursor:pointer;font-size:1.1rem}
+.total{display:flex;justify-content:space-between;font-weight:600;font-size:1.2rem;padding:16px 0}
+#veil{position:fixed;inset:0;background:#0006;z-index:40;display:none}
+#veil.on{display:block}
+</style>
+</head>
+<body>
+
+<header><div class="wrap"><nav>
+  <a class="logo" href="#">Aura Moda</a>
+  <div class="links"><a href="#categorias">Categorías</a><a href="#tienda">Tienda</a><a href="#ofertas">Ofertas</a><a href="#opiniones">Opiniones</a><a href="#contacto">Contacto</a></div>
+  <button class="cart-btn" onclick="togglePanel()">🛍️ Carrito<span id="count">0</span></button>
+</nav></div></header>
+
+<main class="wrap">
+<div class="hero">
+  <div>
+    <span class="tag">✨ NUEVA COLECCIÓN 2026</span>
+    <h1>Viste tu <em>estilo</em>, vive tu momento</h1>
+    <p>Prendas modernas, cómodas y llenas de personalidad para cada ocasión. Calidad que se siente y diseños que se notan.</p>
+    <a class="btn" href="#tienda">Comprar ahora</a><a class="btn ghost" href="#ofertas">Ver ofertas</a>
+    <div class="stats"><div><b>+500</b><small>Prendas</small></div><div><b>10k</b><small>Clientes felices</small></div><div><b>4.9★</b><small>Valoración</small></div></div>
+  </div>
+  <div class="hero-art"><img src="img/portada.jpg" alt="Nueva colección" onerror="this.remove()">👗
+    <div class="float a">🚚 Envío gratis +S/150</div>
+    <div class="float b">💖 Más de 2,000 favoritos</div>
+  </div>
+</div>
+
+<section id="categorias">
+  <div class="title"><h2>Explora por categoría</h2><p>Encuentra justo lo que buscas</p></div>
+  <div class="cats">
+    <div class="cat" style="background:#ffd9e6" onclick="filtrar('Mujer')"><i>👗</i>Mujer</div>
+    <div class="cat" style="background:#d9e6ff" onclick="filtrar('Hombre')"><i>👔</i>Hombre</div>
+    <div class="cat" style="background:#e4d9ff" onclick="filtrar('Calzado')"><i>👟</i>Calzado</div>
+    <div class="cat" style="background:#d9f5e4" onclick="filtrar('Accesorios')"><i>👜</i>Accesorios</div>
+  </div>
+</section>
+
+<section id="tienda">
+  <div class="title"><h2>Lo más vendido</h2><p>Las favoritas de nuestra comunidad</p></div>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="ofertas">
+  <div class="promo">
+    <h2>Hasta 40% de descuento</h2>
+    <p>En prendas seleccionadas por tiempo limitado. Usa el cupón en tu primera compra:</p>
+    <code>AURA10</code>
+  </div>
+</section>
+
+<section>
+  <div class="perks">
+    <div class="perk"><i>🚚</i><h4>Envío rápido</h4><p>Entregas a todo el país en 2 a 5 días.</p></div>
+    <div class="perk"><i>🔄</i><h4>Cambios fáciles</h4><p>Hasta 15 días para cambiar tu talla.</p></div>
+    <div class="perk"><i>🔒</i><h4>Pago seguro</h4><p>Yape, Plin, tarjeta o contraentrega.</p></div>
+    <div class="perk"><i>💬</i><h4>Atención 24/7</h4><p>Te ayudamos por WhatsApp en todo momento.</p></div>
+  </div>
+</section>
+
+<section id="opiniones">
+  <div class="title"><h2>Lo que dicen nuestras clientas</h2></div>
+  <div class="reviews">
+    <div class="rev"><div class="stars">★★★★★</div><p>“La tela es hermosa y la talla me quedó perfecta. Llegó rapidísimo.”</p><b>Camila R.</b></div>
+    <div class="rev"><div class="stars">★★★★★</div><p>“Me encantó el estilo, recibo elogios cada vez que uso mi chaqueta.”</p><b>Luis M.</b></div>
+    <div class="rev"><div class="stars">★★★★☆</div><p>“Excelente atención y buenos precios. Volveré a comprar seguro.”</p><b>Andrea P.</b></div>
+  </div>
+</section>
+
+<section class="news" id="contacto">
+  <div class="title"><h2>Únete al club Aura 💌</h2><p>Recibe ofertas exclusivas y novedades antes que nadie</p></div>
+  <form onsubmit="suscribir(event)"><input type="email" id="mail" placeholder="Tu correo electrónico" required><button class="btn">Suscribirme</button></form>
+  <div id="msg"></div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div><h5>Aura Moda</h5><p style="font-size:.9rem">Moda que te hace sentir increíble, todos los días.</p></div>
+    <div><h5>Tienda</h5><ul><li>Mujer</li><li>Hombre</li><li>Calzado</li><li>Accesorios</li></ul></div>
+    <div><h5>Ayuda</h5><ul><li>Envíos</li><li>Cambios</li><li>Guía de tallas</li><li>Preguntas frecuentes</li></ul></div>
+    <div><h5>Contacto</h5><ul><li>📍 Puno, Perú</li><li>📞 +51 900 000 000</li><li>✉️ hola@auramoda.com</li></ul></div>
+  </div>
+  <div class="copy">© 2026 Aura Moda. Todos los derechos reservados.</div>
+</div></footer>
+
+<div id="veil" onclick="togglePanel()"></div>
+<aside id="panel">
+  <header><h3>Tu carrito</h3><button onclick="togglePanel()" style="border:0;background:none;font-size:1.5rem;cursor:pointer;color:var(--text)">✕</button></header>
+  <div id="items"></div>
+  <div class="total"><span>Total</span><span id="total">S/ 0.00</span></div>
+  <button class="btn" style="border:0;cursor:pointer;font:600 1rem Poppins" onclick="pagar()">Finalizar compra</button>
+</aside>
+
+<script>
+const productos=[
+ {id:1,img:'img/vestido.jpg',n:'Vestido floral',c:'Mujer',p:89.9,o:119.9,e:'👗',bg:'#ffd9e6',r:5,t:'-25%'},
+ {id:2,img:'img/blusa.jpg',n:'Blusa elegante',c:'Mujer',p:59.9,e:'👚',bg:'#fde4f3',r:4,t:'Nuevo'},
+ {id:3,img:'img/camisa.jpg',n:'Camisa casual',c:'Hombre',p:69.9,e:'👔',bg:'#d9e6ff',r:5},
+ {id:4,img:'img/casaca.jpg',n:'Casaca de abrigo',c:'Hombre',p:149.9,o:199.9,e:'🧥',bg:'#dbe4f5',r:5,t:'-25%'},
+ {id:5,img:'img/zapatillas.jpg',n:'Zapatillas urbanas',c:'Calzado',p:129.9,e:'👟',bg:'#e4d9ff',r:4,t:'Top'},
+ {id:6,img:'img/botines.jpg',n:'Botines de cuero',c:'Calzado',p:159.9,e:'👢',bg:'#efe3d6',r:5},
+ {id:7,img:'img/bolso.jpg',n:'Bolso de mano',c:'Accesorios',p:99.9,e:'👜',bg:'#d9f5e4',r:4,t:'Nuevo'},
+ {id:8,img:'img/gorro.jpg',n:'Gorro de alpaca',c:'Accesorios',p:39.9,o:55,e:'🧢',bg:'#ffe9c9',r:5,t:'-30%'}
+];
+let carrito=[],cat='Todos';
+const $=s=>document.querySelector(s);
+const fmt=n=>'S/ '+n.toFixed(2);
+
+function pintarFiltros(){
+  const cs=['Todos',...new Set(productos.map(p=>p.c))];
+  $('#filters').innerHTML=cs.map(c=>`<button class="${c===cat?'on':''}" onclick="filtrar('${c}')">${c}</button>`).join('');
+}
+function pintar(){
+  const lista=productos.filter(p=>cat==='Todos'||p.c===cat);
+  $('#grid').innerHTML=lista.map(p=>`
+  <article class="card">
+    ${p.t?`<span class="badge">${p.t}</span>`:''}
+    <div class="thumb" style="background:${p.bg}">${p.e}<img src="${p.img}" alt="${p.n}" loading="lazy" onerror="this.remove()"></div>
+    <div class="info"><small>${p.c}</small><h3>${p.n}</h3>
+      <div class="stars">${'★'.repeat(p.r)}${'☆'.repeat(5-p.r)}</div>
+      <div class="row"><div class="price">${fmt(p.p)}${p.o?`<s>${fmt(p.o)}</s>`:''}</div>
+      <button class="add" aria-label="Agregar" onclick="agregar(${p.id})">+</button></div>
+    </div>
+  </article>`).join('');
+}
+function filtrar(c){cat=c;pintarFiltros();pintar();document.getElementById('tienda').scrollIntoView()}
+function agregar(id){
+  const it=carrito.find(x=>x.id===id);
+  it?it.q++:carrito.push({id,q:1});
+  actualizar();
+  if(!$('#panel').classList.contains('open'))togglePanel();
+}
+function quitar(id){carrito=carrito.filter(x=>x.id!==id);actualizar()}
+function actualizar(){
+  let tot=0,cant=0;
+  $('#items').innerHTML=carrito.length?carrito.map(x=>{
+    const p=productos.find(y=>y.id===x.id);tot+=p.p*x.q;cant+=x.q;
+    return `<div class="it"><span class="e"><img src="${p.img}" alt="" style="width:48px;height:48px;object-fit:cover;border-radius:10px" onerror="this.outerHTML='${p.e}'"></span><div><b>${p.n}</b><br>${x.q} × ${fmt(p.p)}</div><button onclick="quitar(${p.id})">🗑</button></div>`;
+  }).join(''):'<p style="color:var(--muted);text-align:center;margin-top:40px">Tu carrito está vacío 🛒</p>';
+  $('#total').textContent=fmt(tot);$('#count').textContent=cant;
+}
+function togglePanel(){$('#panel').classList.toggle('open');$('#veil').classList.toggle('on')}
+function pagar(){
+  if(!carrito.length)return alert('Agrega productos primero');
+  alert('¡Gracias por tu compra! 💖 Te contactaremos para coordinar el pago y la entrega.');
+  carrito=[];actualizar();togglePanel();
+}
+function suscribir(e){
+  e.preventDefault();
+  $('#msg').textContent='¡Listo! Tu cupón AURA10 está en camino a '+$('#mail').value+' 🎉';
+  e.target.reset();
+}
+pintarFiltros();pintar();actualizar();
+</script>
+</body>
+</html>
